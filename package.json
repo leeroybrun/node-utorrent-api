@@ -1,0 +1,25 @@
+{
+  "name": "utorrent-api",
+  "version": "0.1.0",
+  "author": "Leeroy Brun <leeroy.brun@gmail.com>",
+  "description": "Interact with the uTorrent Web API",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leeroybrun/node-utorrent-api.git"
+  },
+  "keywords": [
+    "torrents",
+    "utorrent",
+    "bittorrent",
+    "bittorrent client",
+    "api"
+  ], 
+  "license": "MIT",
+  "dependencies" : {
+      "request":  "*"
+  },
+  "engines": [
+    "node"
+  ],
+  "main": "./lib/utorrent.js"
+}
