@@ -1,5 +1,7 @@
 # node-utorrent-api
 
+[![NPM](https://nodei.co/npm/utorrent-api.png)](https://nodei.co/npm/utorrent-api/)
+
 Node.js wrapper arround the uTorrent Web API.
 
 ## Basic Usage
