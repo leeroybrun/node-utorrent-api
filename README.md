@@ -11,7 +11,7 @@ You can find an advanded list of methods supported by uTorrent Web UI API [on th
 
 First you need to instanciate a new client object, and then set the credentials used to connect to the uTorrent Web UI.
 
-Then you need to fetch the token, and finally you can do your calls to the API.
+Then you can do your calls to the API.
 
 ## Methods
 
@@ -23,7 +23,7 @@ Set the credentials used to access the uTorrent Web UI.
 
 ### utorrent.fetchToken(callback)
 
-Fetch the token which will be used in each subsequent API calls. You only need to do it one time per client instance, the token is the stored inside it.
+Fetch the token which will be used in each subsequent API calls. This method is directly called before an API call if needed, you don't need to call it by yourself.
 
 Return an error to the callback, if an error occured when accessing the uTorrent API.
 
@@ -45,14 +45,10 @@ var Client = require('utorrent-api');
 var utorrent = new Client('localhost', '22222');
 utorrent.setCredentials('admin', '123456');
 
-utorrent.fetchToken(function(err) {
+utorrent.call('list', function(err, torrents_list) {
 	if(err) { console.log(err); return; }
 
-	utorrent.call('list', function(err, torrents_list) {
-		if(err) { console.log(err); return; }
-
-		console.log(torrents_list);
-	});
+	console.log(torrents_list);
 });
 ```
 
@@ -66,16 +62,12 @@ var fs = require('fs');
 var utorrent = new Client('localhost', '22222');
 utorrent.setCredentials('admin', '123456');
 
-utorrent.fetchToken(function(err) {
-	if(err) { console.log(err); return; }
+request({'uri' : 'http://releases.ubuntu.com/13.04/ubuntu-13.04-desktop-i386.iso.torrent', 'encoding': null}, function (error, response, torrentFileBuffer) {
+	utorrent.call('add-file', {'torrent_file': torrentFileBuffer}, function(err, data) {
+		if(err) { console.log('error : '); console.log(err); return; }
 
-	request({'uri' : 'http://releases.ubuntu.com/13.04/ubuntu-13.04-desktop-i386.iso.torrent', 'encoding': null}, function (error, response, torrentFileBuffer) {
-		utorrent.call('add-file', {'torrent_file': torrentFileBuffer}, function(err, data) {
-			if(err) { console.log('error : '); console.log(err); return; }
-
-			console.log('Successfully added torrent file !');
-			console.log(data);
-		});
+		console.log('Successfully added torrent file !');
+		console.log(data);
 	});
 });
 ```
@@ -89,14 +81,10 @@ var fs = require('fs');
 var utorrent = new Client('localhost', '22222');
 utorrent.setCredentials('admin', '123456');
 
-utorrent.fetchToken(function(err) {
-	if(err) { console.log(err); return; }
+utorrent.call('getprops', {'hash': 'daac7008e2e3a6e4321950c131690aca20c5a08a'}, function(err, data) {
+	if(err) { console.log('error : '); console.log(err); return; }
 
-	utorrent.call('getprops', {'hash': 'daac7008e2e3a6e4321950c131690aca20c5a08a'}, function(err, data) {
-		if(err) { console.log('error : '); console.log(err); return; }
-
-		console.log(data);
-	});
+	console.log(data);
 });
 ```
 

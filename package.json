@@ -1,6 +1,6 @@
 {
   "name": "utorrent-api",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Leeroy Brun <leeroy.brun@gmail.com>",
   "description": "Interact with the uTorrent Web API",
   "repository": {
