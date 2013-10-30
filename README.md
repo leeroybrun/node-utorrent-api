@@ -88,3 +88,4 @@ utorrent.call('getprops', {'hash': 'daac7008e2e3a6e4321950c131690aca20c5a08a'}, 
 });
 ```
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/leeroybrun/node-utorrent-api/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
