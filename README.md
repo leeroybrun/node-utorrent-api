@@ -56,7 +56,7 @@ utorrent.call('list', function(err, torrents_list) {
 
 ```javascript
 var request = require('request');
-var Client = require('../lib/utorrent');
+var Client = require('utorrent-api');
 var fs = require('fs');
 
 var utorrent = new Client('localhost', '22222');
@@ -75,7 +75,7 @@ request({'uri' : 'http://releases.ubuntu.com/13.04/ubuntu-13.04-desktop-i386.iso
 ### Get torrent details
 
 ```javascript
-var Client = require('../lib/utorrent');
+var Client = require('utorrent-api');
 var fs = require('fs');
 
 var utorrent = new Client('localhost', '22222');
